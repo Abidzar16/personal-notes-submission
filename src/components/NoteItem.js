@@ -1,5 +1,4 @@
 import React from 'react';
-// import NotesList from './NotesList';
 import NoteItemContent from './NoteItemContent';
 import NoteItemAction from './NoteItemAction';
 

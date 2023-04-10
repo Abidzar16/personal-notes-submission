@@ -3,9 +3,9 @@ import React from 'react';
 
 import NoteItemContent from './NoteItemContent';
 import NoteItemAction from './NoteItemAction';
-import { getInitialData, showFormattedDate } from './../utils';
+import { getInitialData, showFormattedDate } from '../utils';
 
-function NoteList({is_archived_list}) {
+function NotesList({is_archived_list}) {
     const initial_data = getInitialData();
     const count = Object.values(initial_data).filter(note => note.archived === is_archived_list).length
 
@@ -38,4 +38,4 @@ function NoteList({is_archived_list}) {
     }
 }
 
-export default NoteList;
+export default NotesList;

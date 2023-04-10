@@ -1,13 +1,16 @@
 import React from 'react';
-import NoteList from './components/NoteList';
+import NotesList from './components/NotesList';
+import NoteInput from './components/NoteInput';
+import { getInitialData, showFormattedDate } from './utils/index';
 
 function App() {
     return (
       <div className="note-app__body">
+        <NoteInput />
         <h2>Catatan Aktif</h2>
-        <NoteList is_archived_list={false} />
+        <NotesList is_archived_list={false} />
         <h2>Arsip</h2>
-        <NoteList is_archived_list={true} />
+        <NotesList is_archived_list={true} />
       </div>
     );
 }
