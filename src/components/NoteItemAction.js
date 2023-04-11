@@ -1,14 +1,14 @@
 import React from 'react';
+import DeleteButton from './DeleteButton';
+import ArchiveButton from './ArchiveButton';
  
-function NoteItemContent({ id, archived }) {
-    const placeholder = archived === false ? "Arsipkan" : "Pindahkan";
-
-    // function deleteNote
+function NoteItemContent({ id, archived, onDelete, onArchive }) {
+    // const placeholder = archived === false ? "Arsipkan" : "Pindahkan";
 
     return (
         <div className="note-item__action">
-            <button class="note-item__delete-button" onClick={deleteNote(id)}>Delete</button>
-            <button class="note-item__archive-button">{placeholder}</button>
+            <DeleteButton id={id} onDelete={onDelete}/>
+            <ArchiveButton id={id} archived={archived} onArchive={onArchive}/>
         </div>
     );
 }

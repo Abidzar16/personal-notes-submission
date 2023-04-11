@@ -1,26 +1,18 @@
 import React from 'react';
-// import { useState } from 'react';
 
-import NoteItemContent from './NoteItemContent';
-import NoteItemAction from './NoteItemAction';
-import { getInitialData, showFormattedDate } from '../utils';
+import NoteItem from "./NoteItem"
+import { showFormattedDate } from '../utils';
 
-function NotesList({is_archived_list}) {
-    const initial_data = getInitialData();
-    const count = Object.values(initial_data).filter(note => note.archived === is_archived_list).length
+function NotesList({is_archived_list, notes, onDelete, onArchive}) {
+    
+    const count = Object.values(notes).filter(note => note.archived === is_archived_list).length
 
-    let notes = initial_data.map((note) => {
+    let list_notes = notes.map((note) => {
         if (note.archived === is_archived_list){
-            // setCount(a => a + 1);
-            // console.log(count);
             return (
-                <div className='note-item'>
-                    <NoteItemContent title={note.title} body={note.body} createdAt={showFormattedDate(note.createdAt)} />
-                    <NoteItemAction id={note.id} archived={note.archived} />
-                </div>
+                <NoteItem id={note.id} archived={note.archived} title={note.title} body={note.body} createdAt={showFormattedDate(note.createdAt)} onDelete={onDelete} onArchive={onArchive} />    
             )
         } else {
-            // console.log(count);
             return <></>
         }
     })
@@ -32,7 +24,7 @@ function NotesList({is_archived_list}) {
     } else {
         return (
             <div className="notes-list">
-                {notes}
+                {list_notes}
             </div>
         );
     }
